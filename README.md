@@ -29,12 +29,26 @@ Este proyecto lo desarrollan dos personas, cada una con su propio agente de IA:
 
 Las reglas de colaboración y la división detallada están en `CLAUDE.md` (no versionado en este repo). El registro de avances por push está en `CHANGELOG.md`. Los planes de cada fase se documentan en `planes-cloud-native/`.
 
+## Cómo levantar la infraestructura local
+
+\`\`\`bash
+cd infra
+cp .env.example .env
+docker compose -f docker-compose.base.yml up -d
+\`\`\`
+
+- RabbitMQ: [http://localhost:15672](http://localhost:15672) (user/pass en `.env`).
+- Kafka: `localhost:9092`.
+
+Guías detalladas: `infra/azure-ad/README.md` y `infra/ec2/README.md`.
+
 ## Estructura del repositorio
 
 ```
 .
+├── infra/                 # Docker Compose, brokers, guías Azure AD y EC2
 ├── planes-cloud-native/   # Planes de cada fase/implementación
-├── CHANGELOG.md           # Historial de avances por push
+├── CHANGELOG.md
 ├── README.md
 └── .gitignore
 ```
