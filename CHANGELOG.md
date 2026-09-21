@@ -11,3 +11,9 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-21 | Compañero/Deepseek | Fase 0 | Limpieza de `DEEPSEEK.md` (textos truncados, nombre unificado desde `CLAUDE.md`), ajustes en `README.md` y `.gitignore`.
 - 2026-09-21 | Compañero/Deepseek | Fase 1 | Esqueleto de infraestructura: `infra/docker-compose.base.yml` con red, volúmenes, RabbitMQ y Kafka (KRaft); `.env.example`; guías de Azure AD y EC2. Plan en `planes-cloud-native/01-fase-1-infra-esqueleto.md`.
 
+- 2026-09-21 | Compañero/opencode | Fase 1-2 | Contratos compartidos (`contracts`) con DTOs, enums, rutas y eventos; `pom.xml` padre multi-módulo. Plan en `planes-cloud-native/02-fase-1-y-2-contratos-esqueleto-dominio.md`.
+- 2026-09-21 | Compañero/opencode | Fase 2 | `ms-rutaexpress-shipments` (CRUD + máquina de estados) y `ms-rutaexpress-catalog` (servicios, tarifas y flota).
+- 2026-09-21 | Compañero/opencode | Fase 3-4 | `ms-rutaexpress-notify` (RabbitMQ), `ms-rutaexpress-audit` y `ms-rutaexpress-report` (Kafka), `ms-rutaexpress-bff` (agregador). Publicación de eventos y notificaciones desde `shipments`.
+- 2026-09-21 | Compañero/opencode | Fase 1/6 | Frontend React (Vite + TS) con pantallas Dashboard, Envíos y Catálogo (verificado: `npm run build` + `tsc`).
+- 2026-09-21 | Compañero/opencode | Fase 7 | Dockerfiles (`Dockerfile.service`, `frontend/Dockerfile`) y `docker-compose.apps.yml` para levantar las apps junto a los brokers.
+

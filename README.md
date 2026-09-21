@@ -4,20 +4,21 @@ Plataforma unificada de envíos de última milla para una red de couriers PyME: 
 
 ## Estado del proyecto
 
-**Fase 0 — Setup** (en progreso): estructura del repositorio y reglas de colaboración.
+**Fase 1-2 — Contratos, esqueleto y dominio base** (avanzado): contratos compartidos, los seis microservicios con dominio base, mensajería (RabbitMQ + Kafka) y frontend React inicial. Pendiente: seguridad Azure AD/JWT (Fase 5), pantallas completas por rol (Fase 6) y despliegue en EC2 (Fase 7).
 
 ## Stack
 
-- **Frontend**: React (nota: el caso de evaluación original pide Angular; el equipo decidió usar React).
-- **Backend**: Spring Boot, microservicios detrás de un BFF y de AWS API Gateway.
-  - `ms-rutaexpress-shipments` — CRUD de envíos y máquina de estados.
+- **Frontend**: React (Vite + TypeScript). Nota: el caso de evaluación original pide Angular; el equipo decidió usar React.
+- **Backend**: Spring Boot 3.3 (Java 17), multi-módulo Maven detrás de un BFF y de AWS API Gateway.
+  - `contracts` — DTOs, enums, rutas y eventos compartidos.
+  - `ms-rutaexpress-shipments` — CRUD de envíos y máquina de estados (publica eventos y notificaciones).
   - `ms-rutaexpress-catalog` — servicios de envío, tarifas y capacidad de flota.
   - `ms-rutaexpress-notify` — notificaciones (email/push, ticket de bodega) vía RabbitMQ.
   - `ms-rutaexpress-report` — KPIs y analítica, consumidor de Kafka.
   - `ms-rutaexpress-audit` — timeline de auditoría, consumidor de Kafka.
   - `ms-rutaexpress-bff` — backend-for-frontend detrás del API Gateway.
-- **Identidad**: Azure AD (IDaaS) con JWT validado en AWS API Gateway y en cada microservicio.
-- **Mensajería**: RabbitMQ (colas de trabajo) y Kafka (streaming de eventos/auditoría).
+- **Identidad**: Azure AD (IDaaS) con JWT validado en AWS API Gateway y en cada microservicio (Fase 5).
+- **Mensajería**: RabbitMQ (cola de notificaciones) y Kafka (topic de eventos de envío).
 - **Infraestructura**: AWS EC2 con Docker / Docker Compose.
 
 ## Equipo y forma de trabajo
@@ -29,28 +30,64 @@ Este proyecto lo desarrollan dos personas, cada una con su propio agente de IA:
 
 Las reglas de colaboración y la división detallada están en `CLAUDE.md` (no versionado en este repo). El registro de avances por push está en `CHANGELOG.md`. Los planes de cada fase se documentan en `planes-cloud-native/`.
 
-## Cómo levantar la infraestructura local
-
-\`\`\`bash
-cd infra
-cp .env.example .env
-docker compose -f docker-compose.base.yml up -d
-\`\`\`
-
-- RabbitMQ: [http://localhost:15672](http://localhost:15672) (user/pass en `.env`).
-- Kafka: `localhost:9092`.
-
-Guías detalladas: `infra/azure-ad/README.md` y `infra/ec2/README.md`.
-
 ## Estructura del repositorio
 
 ```
 .
-├── infra/                 # Docker Compose, brokers, guías Azure AD y EC2
-├── planes-cloud-native/   # Planes de cada fase/implementación
+├── contracts/                 # DTOs, enums, rutas y eventos compartidos
+├── ms-rutaexpress-shipments/  # microservicio de envíos (8081)
+├── ms-rutaexpress-catalog/    # microservicio de catálogo (8082)
+├── ms-rutaexpress-notify/     # microservicio de notificaciones (8083)
+├── ms-rutaexpress-report/     # microservicio de KPIs (8084)
+├── ms-rutaexpress-audit/      # microservicio de auditoría (8085)
+├── ms-rutaexpress-bff/        # backend-for-frontend (8080)
+├── frontend/                  # React (Vite + TS), dev en :3000
+├── infra/                     # Docker Compose, Dockerfiles, guías Azure AD y EC2
+├── planes-cloud-native/       # Planes de cada fase/implementación
 ├── CHANGELOG.md
 ├── README.md
+├── pom.xml
 └── .gitignore
 ```
 
-*(Se irá completando con las carpetas de cada microservicio y del frontend a medida que avancen las fases.)*
+## Cómo levantar el entorno
+
+### Infraestructura local (brokers)
+
+```bash
+cd infra
+cp .env.example .env
+docker compose -f docker-compose.base.yml up -d
+```
+
+- RabbitMQ: http://localhost:15672 (user/pass en `.env`).
+- Kafka: `localhost:9092`.
+
+### Backend (requiere JDK 17 y Maven)
+
+```bash
+# desde la raíz del repo
+mvn -pl ms-rutaexpress-shipments -am spring-boot:run   # puerto 8081
+mvn -pl ms-rutaexpress-catalog -am spring-boot:run     # puerto 8082
+# ... etc. para notify (8083), report (8084), audit (8085) y bff (8080)
+```
+
+Cada servicio usa H2 en memoria en local (consola en `http://localhost:<puerto>/h2-console`, JDBC URL según `application.yml`).
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev   # http://localhost:3000 (proxea /api al BFF en :8080)
+```
+
+### Todo junto (apps + brokers, vía Docker)
+
+```bash
+cd infra
+cp .env.example .env
+docker compose -f docker-compose.base.yml -f docker-compose.apps.yml up -d --build
+```
+
+Guías detalladas: `infra/azure-ad/README.md` y `infra/ec2/README.md`.
