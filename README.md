@@ -43,7 +43,7 @@ Las reglas de colaboración y la división detallada están en `CLAUDE.md` (no v
 ├── ms-rutaexpress-audit/      # microservicio de auditoría (8085)
 ├── ms-rutaexpress-bff/        # backend-for-frontend (8080)
 ├── frontend/                  # React (Vite + TS), dev en :3000
-├── infra/                     # Compose, Dockerfiles, API Gateway (IaC), guías Azure AD y EC2
+├── infra/                     # Compose, Dockerfiles, ALB y API Gateway (IaC), smoke test, guía de despliegue
 ├── planes-cloud-native/       # Planes de cada fase/implementación
 ├── CHANGELOG.md
 ├── README.md
@@ -104,4 +104,17 @@ cp .env.example .env
 docker compose -f docker-compose.base.yml -f docker-compose.apps.yml up -d --build
 ```
 
-Guías detalladas: `infra/azure-ad/README.md` y `infra/ec2/README.md`.
+En Docker el perfil por defecto es `prod` (PostgreSQL). Para activar JWT, usar
+`SPRING_PROFILES_ACTIVE=prod,secure` con `AZURE_TENANT_ID`/`AZURE_CLIENT_ID` definidos.
+
+### Verificación rápida
+
+```bash
+./infra/smoke-test.sh    # crea un envío y verifica auditoría, KPIs y notificaciones
+```
+
+Guías detalladas: `infra/azure-ad/README.md`, `infra/ec2/README.md` y `infra/api-gateway/README.md`.
+
+## Despliegue en AWS + Azure
+
+El paso a paso completo (Azure AD, EC2, ALB, API Gateway) está en **`infra/DESPLIEGUE.md`**.

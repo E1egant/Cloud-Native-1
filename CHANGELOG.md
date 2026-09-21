@@ -26,4 +26,8 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-21 | Compañero/opencode | Fase 7 | CI con GitHub Actions (backend `mvn test` + frontend `tsc`/build).
 - 2026-09-21 | Compañero/opencode | Fase 7 | `deploy.sh` para EC2, compose con perfil `secure` y build args `VITE_AZURE_*` en el Dockerfile del frontend.
 - 2026-09-21 | Compañero/opencode | Docs | Corrige cercos de código escapados en guías de infra; actualiza README y CHANGELOG.
+- 2026-09-21 | Compañero/opencode | Endurecimiento | Actuator (health) en los 6 servicios y PostgreSQL (perfil `prod`, database-per-service) con compose y `init.sql`.
+- 2026-09-21 | Compañero/opencode | Endurecimiento | Plantilla ALB (ruteo `/api/*`→BFF, `/*`→frontend) y smoke test e2e (`infra/smoke-test.sh`).
+- 2026-09-21 | Compañero/opencode | Fase 6 | Endpoint `/api/bff/me` y hook `useRoles`; el frontend oculta la creación de envíos al rol `Bodega`.
+- 2026-09-21 | Compañero/opencode | Docs | Guía de despliegue paso a paso AWS + Azure en `infra/DESPLIEGUE.md`.
 
