@@ -37,4 +37,4 @@ Este repo **no contiene código de los servicios**: es el punto de coordinación
 
 ## Estado
 
-**Fase 1 en progreso (EP1).** BFF con validación JWT y frontend con login MSAL listos. Falta scaffolding de los microservicios de dominio y la configuración de Azure AD. Detalle en `estado/`.
+Los servicios se separaron del monorepo original a un repo por componente (historial conservado). BFF y frontend cumplen la base de la EP1 (JWT con audience y roles, login MSAL). Falta alinear los servicios de dominio con el enunciado: ver `contratos/diferencias-con-el-caso.md` y `estado/`.
