@@ -15,7 +15,7 @@ El backend inicial (creado por opencode/Deepseek en el monorepo) se desvía del 
 | Kafka | `shipments.events`, `audit.timeline`, `*.DLT`; ZK×3 + 3 brokers | `shipment-events`; 1 broker KRaft | shipments, audit, report, infra |
 | notify | Sin BD, no público | Con BD y `GET /api/notifications` | notify |
 | Base de datos | Oracle | H2 (dev) / PostgreSQL (prod) | shipments, catalog, notify, audit |
-| Audience del JWT | Validar issuer y audience | Servicios: solo issuer; `ms-rutaexpress-bff`: issuer + audience | catalog, shipments, notify, audit, report |
+| Audience del JWT | Validar issuer y audience | `ms-rutaexpress-bff`, shipments y notify validan audience (corregido `audience`→`audiences`). catalog, audit y report tienen la propiedad inválida y solo validan issuer (tarea T2 del compañero) | catalog, audit, report |
 | Seguridad por defecto | Endpoints protegidos | Perfil dev sin seguridad | todos los servicios |
-| Pruebas | "responder a pruebas básicas" (EP1) | Solo shipments tiene pruebas | catalog, notify, audit, report, frontend |
+| Pruebas | "responder a pruebas básicas" (EP1) | Todos los repos tienen pruebas (ver `tareas/companero-opencode.md` §4); infra solo tiene `smoke-test.sh` | infra |
 | BFF | Valida JWT (firma, vigencia, issuer, audience, rol) | Ver `ms-rutaexpress-bff` (EP1) y rama `legacy-monorepo` (versión agregadora de opencode) | bff, frontend |

@@ -3,7 +3,7 @@
 **Dueño:** Diego / Claude · **Actualizado:** 2026-09-21
 
 ## Hecho
-React + Vite + TS con MSAL: login/logout, rutas protegidas por rol (roles del ID token), cliente HTTP con Bearer y `acquireTokenSilent`, vistas base. Compila. Rama `legacy-monorepo` con la versión de opencode (usa `/api/bff/me` para roles, Dockerfile y nginx).
+React + Vite + TS con MSAL: login/logout, rutas protegidas por rol (roles del ID token), cliente HTTP con Bearer y `acquireTokenSilent`, vistas base. Compila; 10 pruebas (Vitest). Alineado con la API real (DTO, estados, PATCH, roles). Rama `legacy-monorepo` con la versión de opencode (usa `/api/bff/me` para roles, Dockerfile y nginx).
 
 ## Falta
 Alinear con el BFF y los contratos vigentes (rutas `/api/bff/*` vs `/api/*`, estados en inglés, `PATCH` de estado); traer Dockerfile/nginx de `legacy-monorepo`; vistas reales de catálogo/reportes/auditoría; probar login real; pruebas.

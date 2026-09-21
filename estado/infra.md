@@ -9,4 +9,5 @@ Compose base (RabbitMQ, Kafka KRaft, PostgreSQL), compose de apps, API Gateway C
 **Reescribir `docker-compose.apps.yml`, `Dockerfile.service`, `deploy.sh` y CI para repos separados** (hoy usan `context: ..` del monorepo); RabbitMQ 2 nodos y Kafka 3 brokers + ZK del caso; App Registration con el set de roles acordado.
 
 ## Bloqueos / necesita de otros
+Tareas detalladas y criterios de "hecho": `tareas/companero-opencode.md` (T1, T3, T4, T6c, T7, T8).
 Acuerdo de roles con Diego; entregar valores de Azure AD por canal privado.

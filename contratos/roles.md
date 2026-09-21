@@ -14,6 +14,10 @@ Los roles son **App Roles** de Azure AD y llegan en el claim `roles` del token; 
 
 `Admin`, `Despachador` (Operador), `Cliente` y `Auditor` (solo lectura del timeline). Decisión pendiente: qué set de roles se crea en Azure AD y se usa en todos los servicios (ver `diferencias-con-el-caso.md`).
 
+## Propuesta vigente para Azure AD
+
+Crear los App Roles `Admin`, `Operador`, `Bodega`, `Cliente`, `Auditor` (`Despachador` del caso = `Operador`). Hoy los servicios de dominio solo autorizan `Operador`, `Bodega` y `Admin`; el BFF y el frontend aceptan además `Despachador`, `Cliente` y `Auditor`. Alinear los servicios con `Cliente` y `Auditor` está en las tareas T5/T6.
+
 ## Validación del token
 
 - `issuer` = `https://login.microsoftonline.com/<TENANT_ID>/v2.0`, firma por JWKS, expiración.

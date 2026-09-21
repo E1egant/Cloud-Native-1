@@ -3,10 +3,11 @@
 **Dueño:** compañero / opencode · **Actualizado:** 2026-09-21
 
 ## Hecho
-Consumidor Kafka + `GET /api/reports/kpis` (byStatus, totalEvents). Repo independiente. Compila; sin pruebas.
+Consumidor Kafka + `GET /api/reports/kpis` (byStatus, totalEvents). Repo independiente. 9 pruebas verdes (KPIs, consumidor Kafka, seguridad).
 
 ## Falta
-Pruebas; envíos por hora, lead time, top-services (`/api/report/...`); validar audience.
+Envíos por hora, lead time, top-services (`/api/report/...`); validar audience.
 
 ## Bloqueos / necesita de otros
+Tareas detalladas y criterios de "hecho": `tareas/companero-opencode.md`.
 Kafka del caso en infra.
