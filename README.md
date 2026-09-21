@@ -84,6 +84,8 @@ mvn -pl ms-rutaexpress-bff -am spring-boot:run -Dspring-boot.run.profiles=secure
 
 Con el perfil `secure` se exige JWT (issuer `https://login.microsoftonline.com/<tenant>/v2.0`, audience = `AZURE_CLIENT_ID`). En el frontend, el login MSAL envía el token como `Authorization: Bearer`; el BFF lo reenvía a los servicios aguas abajo (token relay).
 
+**Roles**: se leen del claim `roles` del JWT (App roles de Azure AD). `Operador` y `Admin` crean envíos; `Operador`/`Bodega`/`Admin` cambian estado; solo `Admin` gestiona catálogo y ve auditoría/reportería. En el frontend, esas pantallas se muestran únicamente al rol `Admin`.
+
 ### Frontend
 
 ```bash

@@ -21,4 +21,5 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-21 | Compañero/opencode | Fase 2 | Tests unitarios de la máquina de estados y de `ShipmentService`.
 - 2026-09-21 | Compañero/opencode | Fase 5 | Seguridad: JWT resource server (perfil `secure`) en los 6 servicios, token relay en el BFF y MSAL en el frontend (login + Bearer token).
 - 2026-09-21 | Compañero/opencode | Fase 2 | Seeder de datos demo en el catálogo (servicios y flota).
+- 2026-09-21 | Compañero/opencode | Fase 6 | Autorización por roles (`Operador`/`Bodega`/`Admin`): el backend lee roles del JWT y protege endpoints; el frontend oculta pantallas según rol.
 
