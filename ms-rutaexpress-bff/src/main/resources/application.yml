@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ms-rutaexpress-bff
+
+rutaexpress:
+  shipments-url: ${SHIPMENTS_URL:http://localhost:8081}
+  catalog-url: ${CATALOG_URL:http://localhost:8082}
+
+server:
+  port: 8080
