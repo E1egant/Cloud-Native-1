@@ -3,6 +3,7 @@ Material Evaluacion/
 
 # Reglas internas del proyecto (no debe subirse al repo)
 CLAUDE.md
+DEEPSEEK.md
 
 # Dependencias / build
 node_modules/
