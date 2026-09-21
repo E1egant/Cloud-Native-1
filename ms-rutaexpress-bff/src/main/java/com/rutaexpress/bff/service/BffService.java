@@ -1,5 +1,6 @@
 package com.rutaexpress.bff.service;
 
+import com.rutaexpress.bff.config.TokenRelayInterceptor;
 import com.rutaexpress.contracts.ApiPaths;
 import com.rutaexpress.contracts.dto.AuditEntryDto;
 import com.rutaexpress.contracts.dto.FleetCapacityDto;
@@ -28,12 +29,13 @@ public class BffService {
             @Value("${rutaexpress.catalog-url:http://localhost:8082}") String catalogUrl,
             @Value("${rutaexpress.notify-url:http://localhost:8083}") String notifyUrl,
             @Value("${rutaexpress.audit-url:http://localhost:8085}") String auditUrl,
-            @Value("${rutaexpress.report-url:http://localhost:8084}") String reportUrl) {
-        this.shipmentsClient = RestClient.builder().baseUrl(shipmentsUrl).build();
-        this.catalogClient = RestClient.builder().baseUrl(catalogUrl).build();
-        this.notifyClient = RestClient.builder().baseUrl(notifyUrl).build();
-        this.auditClient = RestClient.builder().baseUrl(auditUrl).build();
-        this.reportClient = RestClient.builder().baseUrl(reportUrl).build();
+            @Value("${rutaexpress.report-url:http://localhost:8084}") String reportUrl,
+            TokenRelayInterceptor tokenRelay) {
+        this.shipmentsClient = RestClient.builder().baseUrl(shipmentsUrl).requestInterceptor(tokenRelay).build();
+        this.catalogClient = RestClient.builder().baseUrl(catalogUrl).requestInterceptor(tokenRelay).build();
+        this.notifyClient = RestClient.builder().baseUrl(notifyUrl).requestInterceptor(tokenRelay).build();
+        this.auditClient = RestClient.builder().baseUrl(auditUrl).requestInterceptor(tokenRelay).build();
+        this.reportClient = RestClient.builder().baseUrl(reportUrl).requestInterceptor(tokenRelay).build();
     }
 
     public List<ShipmentResponse> listShipments() {
