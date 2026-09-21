@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
+import { useMsal } from '@azure/msal-react'
 import { api } from '../api/client'
 import type { ShipmentResponse } from '../types'
 
 export default function Shipments() {
+  const { accounts } = useMsal()
+  const account = accounts[0]
+  const roles = (account?.idTokenClaims?.roles as string[] | undefined) ?? []
+  const canCreate = !account || roles.includes('Operador') || roles.includes('Admin')
+
   const [shipments, setShipments] = useState<ShipmentResponse[]>([])
   const [error, setError] = useState<string | null>(null)
   const [origin, setOrigin] = useState('')
@@ -45,20 +51,22 @@ export default function Shipments() {
       <h2>Envíos</h2>
       {error && <p style={{ color: '#b91c1c' }}>{error}</p>}
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-          gap: 8,
-          marginBottom: 16,
-        }}
-      >
-        <input placeholder="Origen" value={origin} onChange={(e) => setOrigin(e.target.value)} />
-        <input placeholder="Destino" value={destination} onChange={(e) => setDestination(e.target.value)} />
-        <input placeholder="Destinatario" value={name} onChange={(e) => setName(e.target.value)} />
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <button onClick={submit}>Crear envío</button>
-      </div>
+      {canCreate && (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: 8,
+            marginBottom: 16,
+          }}
+        >
+          <input placeholder="Origen" value={origin} onChange={(e) => setOrigin(e.target.value)} />
+          <input placeholder="Destino" value={destination} onChange={(e) => setDestination(e.target.value)} />
+          <input placeholder="Destinatario" value={name} onChange={(e) => setName(e.target.value)} />
+          <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <button onClick={submit}>Crear envío</button>
+        </div>
+      )}
 
       <table>
         <thead>
