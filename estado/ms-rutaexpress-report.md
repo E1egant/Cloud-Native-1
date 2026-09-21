@@ -3,10 +3,10 @@
 **Dueño:** compañero / opencode · **Actualizado:** 2026-09-21
 
 ## Hecho
-Repo creado, vacío.
+Consumidor Kafka + `GET /api/reports/kpis` (byStatus, totalEvents). Repo independiente. Compila; sin pruebas.
 
 ## Falta
-Scaffolding Boot, consumidor Kafka, agregaciones, `kpis` y `top-services`, filtro JWT+roles, tests.
+Pruebas; envíos por hora, lead time, top-services (`/api/report/...`); validar audience.
 
 ## Bloqueos / necesita de otros
-Kafka desplegado (infra).
+Kafka del caso en infra.

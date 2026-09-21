@@ -1,12 +1,12 @@
 # Estado: ms-rutaexpress-shipments
 
-**Dueño:** Diego / Claude · **Actualizado:** 2026-09-21
+**Dueño:** Diego / Claude (código inicial: opencode) · **Actualizado:** 2026-09-21
 
 ## Hecho
-Repo creado, vacío.
+CRUD de envíos, máquina de estados, publicación a RabbitMQ y Kafka, seguridad JWT por perfil `secure`. Repo independiente (Boot 3.3.5). 10 pruebas verdes.
 
 ## Falta
-Scaffolding Boot, entidades/repositorios Oracle, máquina de estados, filtro JWT+roles, publicación a RabbitMQ y Kafka, tests (H2).
+Alinear estados y `PUT` con el caso; validar audience; perfil dev seguro por defecto; decidir Oracle vs PostgreSQL; `Dockerfile` y CI propios.
 
 ## Bloqueos / necesita de otros
-Credenciales Oracle y hosts de RabbitMQ/Kafka.
+Acuerdo de roles y estados con el compañero.

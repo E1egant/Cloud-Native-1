@@ -3,10 +3,10 @@
 **Dueño:** compañero / opencode · **Actualizado:** 2026-09-21
 
 ## Hecho
-Repo creado, vacío.
+Consumidor Kafka + `GET /api/audit`. Repo independiente. Compila; sin pruebas.
 
 ## Falta
-Scaffolding Boot, consumidor Kafka, persistencia Oracle, `GET /api/audit/events`, filtro JWT+roles, tests.
+Pruebas; filtros (usuario, fechas, tipo); rol Auditor; tópicos `shipments.events`/`audit.timeline`; validar audience.
 
 ## Bloqueos / necesita de otros
-Kafka desplegado (infra).
+Kafka del caso (3 brokers) en infra.

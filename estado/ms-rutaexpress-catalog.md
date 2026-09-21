@@ -3,10 +3,10 @@
 **Dueño:** compañero / opencode · **Actualizado:** 2026-09-21
 
 ## Hecho
-Repo creado, vacío.
+Servicios, tarifas y flota (seeder demo). Repo independiente. Compila; sin pruebas.
 
 ## Falta
-Scaffolding Boot, CRUD servicios, `reserve` atómico, Oracle, filtro JWT+roles (copiar plantilla del BFF), tests.
+Pruebas; `PUT /services/{id}`; capacidad que disminuye al aceptar; validar audience; decidir Oracle vs PostgreSQL; `Dockerfile` y CI propios.
 
 ## Bloqueos / necesita de otros
-Credenciales Oracle.
+—

@@ -1,12 +1,12 @@
 # Estado: ms-rutaexpress-notify
 
-**Dueño:** Diego / Claude · **Actualizado:** 2026-09-21
+**Dueño:** Diego / Claude (código inicial: opencode) · **Actualizado:** 2026-09-21
 
 ## Hecho
-Repo creado, vacío.
+Consumidor RabbitMQ que registra notificaciones (`GET /api/notifications`). Repo independiente. Compila; sin pruebas.
 
 ## Falta
-Scaffolding Boot, consumidor de las 3 colas con DLQ, envelope, ACK/NACK, idempotencia.
+Pruebas; topología de 3 colas + DLQ y envelope del caso; quitar BD si se sigue el caso ("sin DB"); validar audience.
 
 ## Bloqueos / necesita de otros
-Topología RabbitMQ desplegada (infra).
+Topología RabbitMQ del caso en infra.
