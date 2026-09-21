@@ -1,0 +1,2 @@
+# Normaliza finales de línea: scripts shell siempre LF.
+*.sh text eol=lf
