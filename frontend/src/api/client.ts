@@ -7,13 +7,19 @@ import type {
   ShipmentRequest,
   ShipmentResponse,
 } from '../types'
+import { getAccessToken } from '../auth/msal'
 
 const BASE_URL = import.meta.env.VITE_BFF_URL ?? '/api/bff'
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const token = await getAccessToken()
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
   const res = await fetch(`${BASE_URL}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
     ...init,
+    headers: { ...headers, ...(init?.headers ?? {}) },
   })
   if (!res.ok) {
     throw new Error(`HTTP ${res.status}`)

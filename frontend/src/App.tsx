@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useMsal } from '@azure/msal-react'
+import { loginRequest } from './auth/msal'
 import Dashboard from './pages/Dashboard'
 import Shipments from './pages/Shipments'
 import Catalog from './pages/Catalog'
@@ -14,6 +16,21 @@ const PAGES: { id: Page; label: string }[] = [
   { id: 'audit', label: 'Auditoría' },
   { id: 'reports', label: 'Reportería' },
 ]
+
+function AuthArea() {
+  const { instance, accounts } = useMsal()
+  const account = accounts[0]
+
+  if (account) {
+    return (
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <span style={{ fontSize: 13 }}>{account.name ?? account.username}</span>
+        <button onClick={() => instance.logoutRedirect()}>Salir</button>
+      </div>
+    )
+  }
+  return <button onClick={() => instance.loginRedirect(loginRequest)}>Entrar</button>
+}
 
 export default function App() {
   const [page, setPage] = useState<Page>('dashboard')
@@ -46,6 +63,7 @@ export default function App() {
             </button>
           ))}
         </nav>
+        <AuthArea />
       </header>
       <main>
         {page === 'dashboard' && <Dashboard />}
