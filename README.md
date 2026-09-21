@@ -27,13 +27,14 @@ Este proyecto lo desarrollan dos personas, cada una con su propio agente de IA:
 - Backend + Frontend: a cargo de Diego, con Claude Code.
 - Infraestructura (Docker, RabbitMQ, Kafka, Azure AD, API Gateway, despliegue EC2): a cargo de su compañero, con opencode.
 
-Las reglas de colaboración, división detallada y el registro de avances están en `CLAUDE.md` (no versionado en este repo). Los planes de cada fase se documentan en `planes-cloud-native/`.
+Las reglas de colaboración y la división detallada están en `CLAUDE.md` (no versionado en este repo). El registro de avances por push está en `CHANGELOG.md`. Los planes de cada fase se documentan en `planes-cloud-native/`.
 
 ## Estructura del repositorio
 
 ```
 .
 ├── planes-cloud-native/   # Planes de cada fase/implementación
+├── CHANGELOG.md           # Historial de avances por push
 ├── README.md
 └── .gitignore
 ```
