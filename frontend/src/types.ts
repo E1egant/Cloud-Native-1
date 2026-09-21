@@ -59,3 +59,24 @@ export interface FleetCapacity {
   maxVolumeM3: number
   status: FleetStatus
 }
+
+export interface NotificationDto {
+  id: number
+  channel: string
+  recipient: string
+  subject: string
+  body: string
+  createdAt: string
+}
+
+export interface AuditEntry {
+  id: number
+  shipmentId: number
+  status: ShipmentStatus
+  occurredAt: string
+}
+
+export interface KpiReport {
+  byStatus: Partial<Record<ShipmentStatus, number>>
+  totalEvents: number
+}

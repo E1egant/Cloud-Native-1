@@ -2,13 +2,17 @@ import { useState } from 'react'
 import Dashboard from './pages/Dashboard'
 import Shipments from './pages/Shipments'
 import Catalog from './pages/Catalog'
+import Audit from './pages/Audit'
+import Reports from './pages/Reports'
 
-type Page = 'dashboard' | 'shipments' | 'catalog'
+type Page = 'dashboard' | 'shipments' | 'catalog' | 'audit' | 'reports'
 
 const PAGES: { id: Page; label: string }[] = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'shipments', label: 'Envíos' },
   { id: 'catalog', label: 'Catálogo' },
+  { id: 'audit', label: 'Auditoría' },
+  { id: 'reports', label: 'Reportería' },
 ]
 
 export default function App() {
@@ -47,6 +51,8 @@ export default function App() {
         {page === 'dashboard' && <Dashboard />}
         {page === 'shipments' && <Shipments />}
         {page === 'catalog' && <Catalog />}
+        {page === 'audit' && <Audit />}
+        {page === 'reports' && <Reports />}
       </main>
     </div>
   )
