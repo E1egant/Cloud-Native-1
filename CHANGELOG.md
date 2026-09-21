@@ -16,4 +16,9 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-21 | Compañero/opencode | Fase 3-4 | `ms-rutaexpress-notify` (RabbitMQ), `ms-rutaexpress-audit` y `ms-rutaexpress-report` (Kafka), `ms-rutaexpress-bff` (agregador). Publicación de eventos y notificaciones desde `shipments`.
 - 2026-09-21 | Compañero/opencode | Fase 1/6 | Frontend React (Vite + TS) con pantallas Dashboard, Envíos y Catálogo (verificado: `npm run build` + `tsc`).
 - 2026-09-21 | Compañero/opencode | Fase 7 | Dockerfiles (`Dockerfile.service`, `frontend/Dockerfile`) y `docker-compose.apps.yml` para levantar las apps junto a los brokers.
+- 2026-09-21 | Compañero/opencode | Fase 1-4 | BFF ampliado (notificaciones, auditoría, KPIs); `KpiReportDto` movido a `contracts`.
+- 2026-09-21 | Compañero/opencode | Fase 6 | Frontend: páginas de Auditoría y Reportería.
+- 2026-09-21 | Compañero/opencode | Fase 2 | Tests unitarios de la máquina de estados y de `ShipmentService`.
+- 2026-09-21 | Compañero/opencode | Fase 5 | Seguridad: JWT resource server (perfil `secure`) en los 6 servicios, token relay en el BFF y MSAL en el frontend (login + Bearer token).
+- 2026-09-21 | Compañero/opencode | Fase 2 | Seeder de datos demo en el catálogo (servicios y flota).
 

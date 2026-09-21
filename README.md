@@ -4,7 +4,7 @@ Plataforma unificada de envíos de última milla para una red de couriers PyME: 
 
 ## Estado del proyecto
 
-**Fase 1-2 — Contratos, esqueleto y dominio base** (avanzado): contratos compartidos, los seis microservicios con dominio base, mensajería (RabbitMQ + Kafka) y frontend React inicial. Pendiente: seguridad Azure AD/JWT (Fase 5), pantallas completas por rol (Fase 6) y despliegue en EC2 (Fase 7).
+**Fase 1-5 avanzada**: contratos compartidos, los seis microservicios con dominio base, mensajería (RabbitMQ + Kafka), frontend React (Dashboard, Envíos, Catálogo, Auditoría, Reportería) y seguridad Azure AD/JWT (resource server + MSAL). Pendiente: pantallas completas por rol (Fase 6) y despliegue en EC2 (Fase 7).
 
 ## Stack
 
@@ -72,7 +72,17 @@ mvn -pl ms-rutaexpress-catalog -am spring-boot:run     # puerto 8082
 # ... etc. para notify (8083), report (8084), audit (8085) y bff (8080)
 ```
 
-Cada servicio usa H2 en memoria en local (consola en `http://localhost:<puerto>/h2-console`, JDBC URL según `application.yml`).
+Cada servicio usa H2 en memoria en local (consola en `http://localhost:<puerto>/h2-console`, JDBC URL según `application.yml`). El catálogo se siembra con datos demo al arrancar.
+
+### Seguridad (Fase 5, opcional en local)
+
+En desarrollo los servicios corren **sin** seguridad. Para activar la validación JWT de Azure AD, arrancar con el perfil `secure`:
+
+```bash
+mvn -pl ms-rutaexpress-bff -am spring-boot:run -Dspring-boot.run.profiles=secure
+```
+
+Con el perfil `secure` se exige JWT (issuer `https://login.microsoftonline.com/<tenant>/v2.0`, audience = `AZURE_CLIENT_ID`). En el frontend, el login MSAL envía el token como `Authorization: Bearer`; el BFF lo reenvía a los servicios aguas abajo (token relay).
 
 ### Frontend
 
