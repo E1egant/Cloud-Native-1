@@ -4,7 +4,7 @@ Plataforma unificada de envíos de última milla para una red de couriers PyME: 
 
 ## Estado del proyecto
 
-**Fase 1-5 avanzada**: contratos compartidos, los seis microservicios con dominio base, mensajería (RabbitMQ + Kafka), frontend React (Dashboard, Envíos, Catálogo, Auditoría, Reportería) y seguridad Azure AD/JWT (resource server + MSAL). Pendiente: pantallas completas por rol (Fase 6) y despliegue en EC2 (Fase 7).
+**Fase 1-7 avanzada**: contratos compartidos, los seis microservicios, mensajería (RabbitMQ + Kafka), frontend React con autorización por rol, seguridad Azure AD/JWT (resource server + MSAL), API Gateway (IaC), CI y script de despliegue EC2. Pendiente: endurecer el despliegue productivo (ALB, PostgreSQL, secret manager).
 
 ## Stack
 
@@ -34,6 +34,7 @@ Las reglas de colaboración y la división detallada están en `CLAUDE.md` (no v
 
 ```
 .
+├── .github/workflows/         # CI (GitHub Actions)
 ├── contracts/                 # DTOs, enums, rutas y eventos compartidos
 ├── ms-rutaexpress-shipments/  # microservicio de envíos (8081)
 ├── ms-rutaexpress-catalog/    # microservicio de catálogo (8082)
@@ -42,11 +43,12 @@ Las reglas de colaboración y la división detallada están en `CLAUDE.md` (no v
 ├── ms-rutaexpress-audit/      # microservicio de auditoría (8085)
 ├── ms-rutaexpress-bff/        # backend-for-frontend (8080)
 ├── frontend/                  # React (Vite + TS), dev en :3000
-├── infra/                     # Docker Compose, Dockerfiles, guías Azure AD y EC2
+├── infra/                     # Compose, Dockerfiles, API Gateway (IaC), guías Azure AD y EC2
 ├── planes-cloud-native/       # Planes de cada fase/implementación
 ├── CHANGELOG.md
 ├── README.md
 ├── pom.xml
+├── .gitattributes
 └── .gitignore
 ```
 

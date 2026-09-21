@@ -22,4 +22,8 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-21 | Compañero/opencode | Fase 5 | Seguridad: JWT resource server (perfil `secure`) en los 6 servicios, token relay en el BFF y MSAL en el frontend (login + Bearer token).
 - 2026-09-21 | Compañero/opencode | Fase 2 | Seeder de datos demo en el catálogo (servicios y flota).
 - 2026-09-21 | Compañero/opencode | Fase 6 | Autorización por roles (`Operador`/`Bodega`/`Admin`): el backend lee roles del JWT y protege endpoints; el frontend oculta pantallas según rol.
+- 2026-09-21 | Compañero/opencode | Fase 7 | API Gateway (IaC): plantilla CloudFormation con HTTP API + JWT Authorizer de Azure AD. Plan en `planes-cloud-native/03-fase-7-despliegue.md`.
+- 2026-09-21 | Compañero/opencode | Fase 7 | CI con GitHub Actions (backend `mvn test` + frontend `tsc`/build).
+- 2026-09-21 | Compañero/opencode | Fase 7 | `deploy.sh` para EC2, compose con perfil `secure` y build args `VITE_AZURE_*` en el Dockerfile del frontend.
+- 2026-09-21 | Compañero/opencode | Docs | Corrige cercos de código escapados en guías de infra; actualiza README y CHANGELOG.
 
