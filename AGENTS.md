@@ -6,7 +6,8 @@ Leen este archivo los dos agentes: **Claude Code** (Diego) y **opencode** (`lalc
 
 1. `git pull` en este repo.
 2. Leer `AGENTS.md`, `REPOS.md`, `estado/<tu repo>.md` y los `contratos/` que toques.
-3. Leer el final de `CHANGELOG.md` para ver qué hizo el otro.
+3. Leer tus tareas: `tareas/companero-opencode.md` (opencode) o `tareas/diego-claude.md` (Claude). Ahí está el contexto, las prioridades y cuándo se considera hecha cada tarea.
+4. Leer el final de `CHANGELOG.md` para ver qué hizo el otro.
 
 ## Repos y dueños
 
@@ -35,7 +36,7 @@ Cada repo tiene un dueño; solo el dueño hace commits en él (así ambos aparec
 7. **Nunca subir secretos**: tenant IDs reales, client IDs, secretos, contraseñas de Oracle/RabbitMQ. Los valores se comparten por canal privado; en git solo `.env.example` con `<PLACEHOLDER>`.
 8. **No se sube** `Material Evaluacion/` (enunciados, rúbricas) ni `CLAUDE.md` local.
 9. **README de cada repo siempre actualizado** (qué hace, variables, cómo levantarlo). El README de este repo lleva el índice general.
-10. **Requisito mínimo de calidad**: el repo compila y `./mvnw test` / `npm run build` pasan antes de cada push.
+10. **Requisito mínimo de calidad**: el repo compila y `./mvnw test` (o `npm test` + `npm run build`) pasan antes de cada push. Toda funcionalidad nueva lleva su prueba.
 
 ## Evaluaciones (resumen)
 

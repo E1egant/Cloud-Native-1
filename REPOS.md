@@ -16,6 +16,10 @@ Organización: cuenta `E1egant` en GitHub (privados; colaborador: `lalcaino`). E
 
 Pendientes según la pauta de cada evaluación: `ms-rutaexpress-rabbit-admin` (Diego) y `ms-rutaexpress-kafka-admin` (compañero).
 
+## Tareas
+
+`tareas/companero-opencode.md` (contexto, setup y tareas priorizadas del compañero) y `tareas/diego-claude.md`.
+
 ## Contratos vigentes (`contratos/`)
 
 `roles.md` · `api-shipments.md` · `api-catalog.md` · `api-report.md` · `api-audit.md` · `rabbitmq.md` · `kafka.md` · `env-vars.md` · **`diferencias-con-el-caso.md`** (lo que hay que alinear con el enunciado)

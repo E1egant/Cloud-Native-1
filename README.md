@@ -31,6 +31,7 @@ Este repo **no contiene código de los servicios**: es el punto de coordinación
 ├── REPOS.md               # Índice de repos, dueños y puertos
 ├── contratos/             # Endpoints/DTOs, roles, RabbitMQ, Kafka, variables de entorno
 ├── estado/                # Un archivo por repo: hecho / falta / bloqueos
+├── tareas/                # Qué hace cada persona: companero-opencode.md, diego-claude.md
 ├── planes-cloud-native/   # Planes de cada fase
 └── CHANGELOG.md           # Historial de avances por push
 ```
