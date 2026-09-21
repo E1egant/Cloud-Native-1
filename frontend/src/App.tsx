@@ -9,12 +9,12 @@ import Reports from './pages/Reports'
 
 type Page = 'dashboard' | 'shipments' | 'catalog' | 'audit' | 'reports'
 
-const PAGES: { id: Page; label: string }[] = [
+const PAGES: { id: Page; label: string; roles?: string[] }[] = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'shipments', label: 'Envíos' },
   { id: 'catalog', label: 'Catálogo' },
-  { id: 'audit', label: 'Auditoría' },
-  { id: 'reports', label: 'Reportería' },
+  { id: 'audit', label: 'Auditoría', roles: ['Admin'] },
+  { id: 'reports', label: 'Reportería', roles: ['Admin'] },
 ]
 
 function AuthArea() {
@@ -34,6 +34,13 @@ function AuthArea() {
 
 export default function App() {
   const [page, setPage] = useState<Page>('dashboard')
+  const { accounts } = useMsal()
+  const account = accounts[0]
+  const roles = (account?.idTokenClaims?.roles as string[] | undefined) ?? []
+
+  const visiblePages = account
+    ? PAGES.filter((p) => !p.roles || p.roles.some((r) => roles.includes(r)))
+    : PAGES
 
   return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: '16px 20px' }}>
@@ -47,7 +54,7 @@ export default function App() {
       >
         <h1 style={{ margin: 0, fontSize: 22 }}>RutaExpress</h1>
         <nav style={{ display: 'flex', gap: 8 }}>
-          {PAGES.map((p) => (
+          {visiblePages.map((p) => (
             <button
               key={p.id}
               onClick={() => setPage(p.id)}
