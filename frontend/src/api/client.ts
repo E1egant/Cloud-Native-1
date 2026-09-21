@@ -2,6 +2,7 @@ import type {
   AuditEntry,
   FleetCapacity,
   KpiReport,
+  Me,
   NotificationDto,
   ServiceType,
   ShipmentRequest,
@@ -40,4 +41,5 @@ export const api = {
   listAudit: (shipmentId?: number) =>
     request<AuditEntry[]>(`/audit${shipmentId ? `?shipmentId=${shipmentId}` : ''}`),
   kpis: () => request<KpiReport>('/reports/kpis'),
+  me: () => request<Me>('/me'),
 }

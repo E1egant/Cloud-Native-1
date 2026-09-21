@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useMsal } from '@azure/msal-react'
 import { loginRequest } from './auth/msal'
+import { useRoles } from './auth/useRoles'
 import Dashboard from './pages/Dashboard'
 import Shipments from './pages/Shipments'
 import Catalog from './pages/Catalog'
@@ -36,7 +37,7 @@ export default function App() {
   const [page, setPage] = useState<Page>('dashboard')
   const { accounts } = useMsal()
   const account = accounts[0]
-  const roles = (account?.idTokenClaims?.roles as string[] | undefined) ?? []
+  const roles = useRoles()
 
   const visiblePages = account
     ? PAGES.filter((p) => !p.roles || p.roles.some((r) => roles.includes(r)))

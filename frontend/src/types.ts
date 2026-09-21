@@ -80,3 +80,8 @@ export interface KpiReport {
   byStatus: Partial<Record<ShipmentStatus, number>>
   totalEvents: number
 }
+
+export interface Me {
+  name: string | null
+  roles: string[]
+}

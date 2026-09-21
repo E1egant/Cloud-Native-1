@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useMsal } from '@azure/msal-react'
 import { api } from '../api/client'
+import { useRoles } from '../auth/useRoles'
 import type { ShipmentResponse } from '../types'
 
 export default function Shipments() {
   const { accounts } = useMsal()
   const account = accounts[0]
-  const roles = (account?.idTokenClaims?.roles as string[] | undefined) ?? []
+  const roles = useRoles()
   const canCreate = !account || roles.includes('Operador') || roles.includes('Admin')
 
   const [shipments, setShipments] = useState<ShipmentResponse[]>([])
