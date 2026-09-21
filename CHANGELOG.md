@@ -31,3 +31,5 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-21 | Compañero/opencode | Fase 6 | Endpoint `/api/bff/me` y hook `useRoles`; el frontend oculta la creación de envíos al rol `Bodega`.
 - 2026-09-21 | Compañero/opencode | Docs | Guía de despliegue paso a paso AWS + Azure en `infra/DESPLIEGUE.md`.
 
+
+- 2026-09-21 | Diego/Claude | Reorganización | El monorepo se separó en un repo por componente (frontend, bff, shipments, catalog, notify, audit, report, infra) conservando el historial de opencode; cada servicio es ahora un proyecto Maven independiente con sus DTOs copiados. `Cloud-Native-1` queda como repo central (AGENTS.md, REPOS.md, contratos/, estado/). Diferencias con el caso en `contratos/diferencias-con-el-caso.md`. Versiones originales de BFF y frontend en la rama `legacy-monorepo` de cada repo.
