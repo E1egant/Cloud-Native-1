@@ -10,7 +10,7 @@ Leen este archivo los dos agentes: **Claude Code** (Diego) y **opencode** (`lalc
 
 ## Repos y dueños
 
-Cada repo tiene un dueño; solo el dueño hace commits en él (así ambos aparecen trabajando ante el docente). Si necesitas algo de un repo ajeno, se pide vía `contratos/` o `estado/`, no editando su código. Tabla completa en `REPOS.md`.
+Cada repo tiene un dueño; solo el dueño hace commits en él (así ambos aparecen trabajando ante el docente). Excepción: la migración inicial del monorepo a repos separados (commits `build:` y `docs:` de arranque) la hizo Diego/Claude. Si necesitas algo de un repo ajeno, se pide vía `contratos/` o `estado/`, no editando su código. Tabla completa en `REPOS.md`.
 
 | Diego / Claude | Compañero / opencode |
 |---|---|
@@ -19,8 +19,9 @@ Cada repo tiene un dueño; solo el dueño hace commits en él (así ambos aparec
 ## Decisiones fijas
 
 - **Frontend en React** (`@azure/msal-react`), no Angular: lo especificó el profesor. Donde la rúbrica diga Angular, `MsalInterceptor` o guards, se usa el equivalente en React. No cuestionar ni reconfirmar.
-- Backend: Spring Boot 4.1, Java 21, Maven (`mvnw` incluido). BD Oracle (perfil de test con H2 para compilar/probar sin Oracle).
-- Seguridad: JWT de Azure AD validado en API Gateway, BFF y en cada microservicio (firma, vigencia, `issuer`, `audience`, rol). Plantilla: `ms-rutaexpress-bff/.../security/`.
+- Backend: Maven con `mvnw` en cada repo. `ms-rutaexpress-bff`: Spring Boot 4.1.1 / Java 21. Servicios de dominio: Spring Boot 3.3.5 / Java 17. BD: H2 en dev y PostgreSQL en `prod` (el caso pide Oracle: decisión pendiente, ver `contratos/diferencias-con-el-caso.md`).
+- Seguridad: JWT de Azure AD validado en API Gateway, BFF y en cada microservicio (firma, vigencia, `issuer`, `audience`, rol). Plantilla con audience, roles y 401/403 en JSON: `ms-rutaexpress-bff/.../security/`. Los servicios de dominio hoy validan solo `issuer` y tienen un perfil dev sin seguridad: hay que alinearlos.
+- Los contratos vigentes describen lo **implementado**; lo que falta para cumplir el enunciado está en `contratos/diferencias-con-el-caso.md`.
 - Flujo: `JWT → API Gateway → ms-rutaexpress-bff → microservicio de dominio`.
 
 ## Reglas de trabajo
