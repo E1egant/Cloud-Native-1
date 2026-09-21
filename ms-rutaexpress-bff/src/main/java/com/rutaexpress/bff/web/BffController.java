@@ -1,7 +1,10 @@
 package com.rutaexpress.bff.web;
 
 import com.rutaexpress.bff.service.BffService;
+import com.rutaexpress.contracts.dto.AuditEntryDto;
 import com.rutaexpress.contracts.dto.FleetCapacityDto;
+import com.rutaexpress.contracts.dto.KpiReportDto;
+import com.rutaexpress.contracts.dto.NotificationDto;
 import com.rutaexpress.contracts.dto.ServiceTypeDto;
 import com.rutaexpress.contracts.dto.ShipmentRequest;
 import com.rutaexpress.contracts.dto.ShipmentResponse;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,5 +47,20 @@ public class BffController {
     @GetMapping("/catalog/fleet")
     public List<FleetCapacityDto> listFleet() {
         return service.listFleet();
+    }
+
+    @GetMapping("/notifications")
+    public List<NotificationDto> listNotifications() {
+        return service.listNotifications();
+    }
+
+    @GetMapping("/audit")
+    public List<AuditEntryDto> listAudit(@RequestParam(required = false) Long shipmentId) {
+        return service.listAudit(shipmentId);
+    }
+
+    @GetMapping("/reports/kpis")
+    public KpiReportDto kpis() {
+        return service.kpis();
     }
 }

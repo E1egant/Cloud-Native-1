@@ -1,7 +1,10 @@
 package com.rutaexpress.bff.service;
 
 import com.rutaexpress.contracts.ApiPaths;
+import com.rutaexpress.contracts.dto.AuditEntryDto;
 import com.rutaexpress.contracts.dto.FleetCapacityDto;
+import com.rutaexpress.contracts.dto.KpiReportDto;
+import com.rutaexpress.contracts.dto.NotificationDto;
 import com.rutaexpress.contracts.dto.ServiceTypeDto;
 import com.rutaexpress.contracts.dto.ShipmentRequest;
 import com.rutaexpress.contracts.dto.ShipmentResponse;
@@ -16,12 +19,21 @@ public class BffService {
 
     private final RestClient shipmentsClient;
     private final RestClient catalogClient;
+    private final RestClient notifyClient;
+    private final RestClient auditClient;
+    private final RestClient reportClient;
 
     public BffService(
             @Value("${rutaexpress.shipments-url:http://localhost:8081}") String shipmentsUrl,
-            @Value("${rutaexpress.catalog-url:http://localhost:8082}") String catalogUrl) {
+            @Value("${rutaexpress.catalog-url:http://localhost:8082}") String catalogUrl,
+            @Value("${rutaexpress.notify-url:http://localhost:8083}") String notifyUrl,
+            @Value("${rutaexpress.audit-url:http://localhost:8085}") String auditUrl,
+            @Value("${rutaexpress.report-url:http://localhost:8084}") String reportUrl) {
         this.shipmentsClient = RestClient.builder().baseUrl(shipmentsUrl).build();
         this.catalogClient = RestClient.builder().baseUrl(catalogUrl).build();
+        this.notifyClient = RestClient.builder().baseUrl(notifyUrl).build();
+        this.auditClient = RestClient.builder().baseUrl(auditUrl).build();
+        this.reportClient = RestClient.builder().baseUrl(reportUrl).build();
     }
 
     public List<ShipmentResponse> listShipments() {
@@ -54,5 +66,34 @@ public class BffService {
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {
                 });
+    }
+
+    public List<NotificationDto> listNotifications() {
+        return notifyClient.get()
+                .uri(ApiPaths.NOTIFICATIONS)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
+
+    public List<AuditEntryDto> listAudit(Long shipmentId) {
+        return auditClient.get()
+                .uri(uriBuilder -> {
+                    var builder = uriBuilder.path(ApiPaths.AUDIT);
+                    if (shipmentId != null) {
+                        builder = builder.queryParam("shipmentId", shipmentId);
+                    }
+                    return builder.build();
+                })
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
+
+    public KpiReportDto kpis() {
+        return reportClient.get()
+                .uri(ApiPaths.REPORTS + "/kpis")
+                .retrieve()
+                .body(KpiReportDto.class);
     }
 }
