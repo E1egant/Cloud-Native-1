@@ -1,4 +1,4 @@
-package com.rutaexpress.notify.config;
+package com.rutaexpress.shipments.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rutaexpress.contracts.MessagingConstants;
