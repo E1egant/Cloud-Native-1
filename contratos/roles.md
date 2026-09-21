@@ -1,0 +1,24 @@
+# Roles y seguridad
+
+Los roles son **App Roles** de Azure AD y llegan en el claim `roles` del token; los servicios los convierten a `ROLE_<Rol>` (sensible a mayúsculas: `Operador`, `Bodega`, `Admin`).
+
+## Implementado (`contracts/Roles`)
+
+| Rol | Puede |
+|---|---|
+| `Operador` | Crear envíos y cambiar su estado |
+| `Bodega` | Cambiar estado de envíos |
+| `Admin` | Todo, incluido catálogo, auditoría y reportes |
+
+## Objetivo del caso
+
+`Admin`, `Despachador` (Operador), `Cliente` y `Auditor` (solo lectura del timeline). Decisión pendiente: qué set de roles se crea en Azure AD y se usa en todos los servicios (ver `diferencias-con-el-caso.md`).
+
+## Validación del token
+
+- `issuer` = `https://login.microsoftonline.com/<TENANT_ID>/v2.0`, firma por JWKS, expiración.
+- **`audience` = `api://<API_CLIENT_ID>`**: la valida `ms-rutaexpress-bff` (rúbrica EP1). Los servicios de dominio hoy validan solo `issuer` con `issuer-uri`.
+- Errores: `401` token ausente/inválido, `403` rol sin permiso, cuerpo JSON.
+- Scope del frontend: `api://<API_CLIENT_ID>/access_as_user`.
+
+Plantilla de referencia con audience, roles y 401/403 en JSON: `ms-rutaexpress-bff` → `security/`.
