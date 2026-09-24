@@ -7,7 +7,7 @@ Servicios, tarifas y flota (seeder demo). Repo independiente. 33 pruebas verdes 
 `PUT /services/{id}` y `POST /fleet/{id}/reserve` con contadores de disponible (BUSY al agotarse, 409 si no alcanza). Audience validada (`audiences`, T2 cerrada).
 
 ## Falta
-Decidir Oracle vs PostgreSQL; `Dockerfile` y CI propios (T7).
+Decidir Oracle vs PostgreSQL.
 
 ## Bloqueos / necesita de otros
 `ms-rutaexpress-shipments` (Diego) debe llamar a `POST /fleet/{id}/reserve` al aceptar un envío (contrato en `contratos/api-catalog.md`). Tareas: `tareas/companero-opencode.md`.

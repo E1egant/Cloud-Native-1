@@ -41,3 +41,7 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-24 | Compañero/opencode | ms-rutaexpress-catalog | `PUT /services/{id}` y `POST /fleet/{id}/reserve` con contadores (33 pruebas verdes); fix `audiences` T2.
 - 2026-09-24 | Compañero/opencode | ms-rutaexpress-audit, ms-rutaexpress-report | Fix `audiences` T2 (9 pruebas verdes en cada uno).
 - 2026-09-24 | Compañero/opencode | infra | Topología RabbitMQ del caso (3 colas + DLQ + exchanges vía `definitions.json`; cola legacy intacta).
+- 2026-09-24 | Compañero/opencode | ms-rutaexpress-audit | Filtros shipmentId/status/actor/from/to, rol Auditor y actor en eventos; consumidor dual-topic (16 pruebas verdes).
+- 2026-09-24 | Compañero/opencode | ms-rutaexpress-report | Métricas hourly/leadtime/top-services con range (18 pruebas verdes).
+- 2026-09-24 | Compañero/opencode | catalog, audit, report | `Dockerfile` propio, mvnw ejecutable y CI de GitHub Actions en los 3.
+- 2026-09-24 | Compañero/opencode | infra | Compose por repos hermanos, Dockerfiles genéricos, deploy con perfil seguro y CI (T3, T7, T8); plantilla API Gateway verificada (T4).
