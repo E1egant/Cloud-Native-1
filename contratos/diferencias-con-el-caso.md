@@ -9,8 +9,8 @@ El backend inicial (creado por opencode/Deepseek en el monorepo) se desvía del 
 | Cambio de estado | `PUT /api/shipments/{id}/status` | `PATCH` — **decisión 2026-09-23: se mantiene `PATCH`** (mismo motivo) | shipments, bff, frontend |
 | Capacidad | Disminuye al aceptar el envío (catálogo) | `POST /api/catalog/fleet/{id}/reserve` decrementa disponible (BUSY al agotarse; 409 si no alcanza) | catalog, shipments |
 | Catálogo | `PUT /api/catalog/services/{id}` (tarifa/capacidad) | GET/POST + `PUT /api/catalog/services/{id}` | catalog |
-| Reportes | `/api/report/kpis?range=`, `/api/report/top-services` (envíos por hora, lead time, estados activos) | `/api/reports/kpis` con `byStatus` y `totalEvents` | report, bff, frontend |
-| Auditoría | Timeline con filtros usuario/fechas/tipo, rol Auditor | `GET /api/audit` sin filtros, solo Admin | audit, bff |
+| Reportes | `/api/report/kpis?range=`, `/api/report/top-services` (envíos por hora, lead time, estados activos) | `/api/reports/kpis?range=`, `/hourly`, `/leadtime`, `/top-services` (envíos por hora, lead time, top por movimientos) | report, bff, frontend |
+| Auditoría | Timeline con filtros usuario/fechas/tipo, rol Auditor | `GET /api/audit` con filtros shipmentId/status/actor/from/to; roles Admin y Auditor (`actor` nulo hasta que shipments lo envíe) | audit, bff |
 | RabbitMQ | 3 colas + 3 DLQ, 3 exchanges, envelope | 1 cola `rutaexpress.notifications` | shipments, notify, infra |
 | Kafka | `shipments.events`, `audit.timeline`, `*.DLT`; ZK×3 + 3 brokers | `shipment-events`; 1 broker KRaft | shipments, audit, report, infra |
 | notify | Sin BD, no público | Con BD y `GET /api/notifications` | notify |

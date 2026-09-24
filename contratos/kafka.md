@@ -2,7 +2,7 @@
 
 ## Implementado
 
-- Tópico `shipment-events` (`MessagingConstants.SHIPMENT_EVENTS_TOPIC`), valor `ShipmentEvent { eventId, shipmentId, status, occurredAt }`.
+- Tópicos `shipment-events` (actual) y `shipments.events` (caso): los consumidores escuchan ambos durante la migración del productor. Valor `ShipmentEvent { eventId, shipmentId, status, actor, occurredAt }` (`actor` nulo hasta que el productor lo envíe).
 - Productor: `ms-rutaexpress-shipments`. Consumidores: `ms-rutaexpress-audit` (8085) y `ms-rutaexpress-report` (8084).
 - Broker: Kafka en modo KRaft (1 nodo) del `docker-compose.base.yml`.
 
