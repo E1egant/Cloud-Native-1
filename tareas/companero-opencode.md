@@ -59,11 +59,11 @@ Regla: **no se hace push si `./mvnw test` falla**. Cuando agregues funcionalidad
 - **App Registration de la API**: Application ID URI `api://<API_CLIENT_ID>`, scope `access_as_user`, y **App Roles** con estos valores exactos: `Admin`, `Operador`, `Bodega`, `Cliente`, `Auditor` (`Despachador` del caso = `Operador`). Asignar al menos un usuario de prueba por rol.
 - **App Registration del SPA**: tipo *Single-page application* (Authorization Code + **PKCE**, sin secreto), redirect URIs `http://localhost:5173` y la URL desplegada; permiso al scope `api://<API_CLIENT_ID>/access_as_user`.
 - En el manifest de la API: `accessTokenAcceptedVersion: 2` (así el `issuer` es `https://login.microsoftonline.com/<TENANT_ID>/v2.0`, que es lo que validan los servicios).
-- **Hecho cuando:** un usuario inicia sesión en el frontend local y el token trae `aud = api://<API_CLIENT_ID>`, `iss` v2.0 y `roles`. Pasa a Diego, **por canal privado**, `TENANT_ID`, `API_CLIENT_ID`, `SPA_CLIENT_ID` y el usuario de prueba de cada rol.
+- **Hecho cuando:** un usuario inicia sesión en el frontend local y el token trae `aud = <API_CLIENT_ID>` (GUID), `iss` v2.0 y `roles`. Pasa a Diego, **por canal privado**, `TENANT_ID`, `API_CLIENT_ID`, `SPA_CLIENT_ID` y el usuario de prueba de cada rol.
 
 **T2 · Validar la audiencia en `catalog`, `audit` y `report`.**
 - Bug encontrado por Diego: `application.yml` usa `audience: ${AZURE_CLIENT_ID}` y **esa propiedad no existe en Spring Boot** (es `audiences`), así que hoy los servicios aceptan un token emitido para *cualquier* API del tenant. La rúbrica pide validar `audience`.
-- Cambio (perfil `secure`, en cada `application.yml`): `audience: ${AZURE_CLIENT_ID}` → `audiences: ${AZURE_API_AUDIENCE}` (valor `api://<API_CLIENT_ID>`). Ya está hecho en `shipments` y `notify`; usa esos como modelo. Las pruebas ya definen `AZURE_API_AUDIENCE`, no hace falta tocarlas.
+- Cambio (perfil `secure`, en cada `application.yml`): `audience: ${AZURE_CLIENT_ID}` → `audiences: ${AZURE_API_AUDIENCE}` (valor `<API_CLIENT_ID>`, el GUID). Ya está hecho en `shipments` y `notify`; usa esos como modelo. Las pruebas ya definen `AZURE_API_AUDIENCE`, no hace falta tocarlas.
 - **Hecho cuando:** `./mvnw test` pasa y un token con otra `aud` recibe 401 (probar con Postman contra el perfil `secure`).
 
 **T3 · Infra para repos separados (`infra`).**
@@ -72,7 +72,7 @@ Regla: **no se hace push si `./mvnw test` falla**. Cuando agregues funcionalidad
 - **Hecho cuando:** `docker compose -f docker-compose.base.yml -f docker-compose.apps.yml up --build` levanta todo desde los repos separados y `smoke-test.sh` pasa.
 
 **T4 · API Gateway apuntando al BFF (`infra/api-gateway`).**
-- JWT Authorizer con `issuer https://login.microsoftonline.com/<TENANT_ID>/v2.0` y `audience api://<API_CLIENT_ID>`; rutas `/api/*` → BFF (8080); **CORS** con el origen del frontend, métodos `GET, POST, PUT, PATCH, DELETE, OPTIONS` y headers `Authorization, Content-Type` (el BFF usa PATCH).
+- JWT Authorizer con `issuer https://login.microsoftonline.com/<TENANT_ID>/v2.0` y `audience <API_CLIENT_ID>` (GUID; el JWT Authorizer compara `aud` exacto); rutas `/api/*` → BFF (8080); **CORS** con el origen del frontend, métodos `GET, POST, PUT, PATCH, DELETE, OPTIONS` y headers `Authorization, Content-Type` (el BFF usa PATCH).
 - **Hecho cuando:** con token válido responde 200, sin token 401, y con rol sin permiso 403 (esto es lo que se muestra en la presentación de la EP2).
 
 ### P1 — alinear con el caso (ver `contratos/diferencias-con-el-caso.md`, una fila por punto)

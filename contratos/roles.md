@@ -21,7 +21,7 @@ Crear los App Roles `Admin`, `Operador`, `Bodega`, `Cliente`, `Auditor` (`Despac
 ## Validación del token
 
 - `issuer` = `https://login.microsoftonline.com/<TENANT_ID>/v2.0`, firma por JWKS, expiración.
-- **`audience` = `api://<API_CLIENT_ID>`**: la valida `ms-rutaexpress-bff` (rúbrica EP1). Los servicios de dominio hoy validan solo `issuer` con `issuer-uri`.
+- **`audience` = `<API_CLIENT_ID>` (el GUID, no `api://…`; con `requestedAccessTokenVersion: 2` el token v2 trae `aud` = GUID; verificado 2026-09-24)**: la valida `ms-rutaexpress-bff` (rúbrica EP1). Los servicios de dominio hoy validan solo `issuer` con `issuer-uri`.
 - Errores: `401` token ausente/inválido, `403` rol sin permiso, cuerpo JSON.
 - Scope del frontend: `api://<API_CLIENT_ID>/access_as_user`.
 
