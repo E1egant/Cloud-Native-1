@@ -49,3 +49,4 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-10-28 | Diego/Claude | contratos | `rabbitmq.md` pasa de objetivo a implementado: topología, envelope, política ACK/NACK/DLQ y API del administrador.
 - 2026-10-28 | Diego/Claude | ms-rutaexpress-notify, ms-rutaexpress-shipments | EP3: 3 colas + DLQ, consumidores por dominio con ACK manual/reintentos/DLQ; shipments publica en `cmd.direct` con envelope (notify 12 pruebas, shipments 18). Commits locales, sin push.
 - 2026-10-28 | Diego/Claude | ms-rutaexpress-rabbit-admin | Repo nuevo: administrador REST de RabbitMQ (16 pruebas). Commit local, sin push.
+- 2026-10-28 | Diego/Claude | ms-rutaexpress-rabbit-admin | Repo creado en GitHub (privado, colaborador lalcaino) y subido; notify y shipments también subidos.

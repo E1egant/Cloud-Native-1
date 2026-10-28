@@ -12,10 +12,10 @@ Organización: cuenta `E1egant` en GitHub (privados; colaborador: `lalcaino`). E
 | `ms-rutaexpress-catalog` | Servicios, tarifas, capacidad (Oracle) | compañero / opencode | 8082 | https://github.com/E1egant/ms-rutaexpress-catalog |
 | `ms-rutaexpress-audit` | Timeline, consumidor Kafka (Oracle) | compañero / opencode | 8085 | https://github.com/E1egant/ms-rutaexpress-audit |
 | `ms-rutaexpress-report` | KPIs, consumidor Kafka (Oracle) | compañero / opencode | 8084 | https://github.com/E1egant/ms-rutaexpress-report |
-| `ms-rutaexpress-rabbit-admin` | Administrador REST de RabbitMQ (colas, exchanges, bindings) | Diego / Claude | 8087 | (por crear) |
+| `ms-rutaexpress-rabbit-admin` | Administrador REST de RabbitMQ (colas, exchanges, bindings) | Diego / Claude | 8087 | https://github.com/E1egant/ms-rutaexpress-rabbit-admin |
 | `infra` | Compose apps/mq/kafka, Azure AD, API Gateway, EC2 | compañero / opencode | — | https://github.com/E1egant/infra |
 
-Pendiente según la pauta: `ms-rutaexpress-kafka-admin` (compañero). `ms-rutaexpress-rabbit-admin` (Diego, puerto 8087) creado en local el 2026-10-28; falta crear el repo `E1egant/ms-rutaexpress-rabbit-admin` y el push.
+Pendiente según la pauta: `ms-rutaexpress-kafka-admin` (compañero). `ms-rutaexpress-rabbit-admin` (Diego, puerto 8087) creado y subido el 2026-10-28.
 
 ## Tareas
 
