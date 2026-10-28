@@ -10,3 +10,6 @@ Rol `Cliente` (ve solo sus envíos); reserva de capacidad en catálogo al acepta
 
 ## Bloqueos / necesita de otros
 Endpoint de reserva de capacidad en `ms-rutaexpress-catalog` (pedido al compañero). Valores de Azure AD reales para probar `secure` con token real.
+
+## EP3 (2026-10-28)
+Publica `email.send`, `label.gen` (al crear) y `warehouse.ticket` (al pasar a `PICKED_UP`) en `cmd.direct` con envelope (`NotificationPublisher`); un fallo del broker se registra y no afecta el envío. 18 pruebas verdes. Commit local `f2c6736`, **sin push**.

@@ -3,10 +3,10 @@
 **Dueño:** Diego / Claude (código inicial: opencode) · **Actualizado:** 2026-09-23
 
 ## Hecho
-Consumidor RabbitMQ que registra notificaciones (`GET /api/notifications`). Repo independiente. Audience corregida (`audiences`). **Idempotencia agregada**: `NotificationRequest.id()` (UUID que ya generaba el publisher) se guarda como `messageId` único; un reintento/redelivery del broker con el mismo id se descarta sin duplicar la notificación (`NotificationService.process`, con su prueba). 8 pruebas verdes (antes 7). `Dockerfile` con `SPRING_PROFILES_ACTIVE=secure` por defecto. CI (`.github/workflows/ci.yml`). `.env.example` nuevo.
+EP3 (2026-10-28): topología del caso como beans (`config/RabbitConfig`: 3 exchanges, 3 colas + 3 DLQ, bindings direct y topic), nombres en `application.yml` (`rutaexpress.rabbit.*`), consumidores por dominio (`messaging/email|warehouse|label`) con ACK manual, 3 intentos en proceso y NACK sin reencolar a DLQ + log (`AckSupport`), idempotencia por `eventId` del envelope. Cola legacy eliminada. 12 pruebas verdes. Commit local `0d0b747`, **sin push**.
 
 ## Falta
-Topología de 3 colas + DLQ y envelope del caso — **depende de que infra (compañero) reconfigure RabbitMQ**; hoy sigue con 1 cola (`rutaexpress.notifications`). Evaluar quitar la BD si se sigue el caso al pie de la letra ("sin DB").
+Probar contra el broker real (compose de infra con `definitions.json`) y forzar un mensaje a la DLQ para la demo. Evaluar quitar la BD ("sin DB" en el caso).
 
 ## Bloqueos / necesita de otros
-Topología RabbitMQ (3 colas + 3 DLQ + 3 exchanges) en `infra` — pedido al compañero, no se puede avanzar del lado de notify hasta que exista.
+Clúster de 2 nodos y compose en la EC2 (infra, compañero).

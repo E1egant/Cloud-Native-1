@@ -45,3 +45,7 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-09-24 | Compañero/opencode | ms-rutaexpress-report | Métricas hourly/leadtime/top-services con range (18 pruebas verdes).
 - 2026-09-24 | Compañero/opencode | catalog, audit, report | `Dockerfile` propio, mvnw ejecutable y CI de GitHub Actions en los 3.
 - 2026-09-24 | Compañero/opencode | infra | Compose por repos hermanos, Dockerfiles genéricos, deploy con perfil seguro y CI (T3, T7, T8); plantilla API Gateway verificada (T4).
+
+- 2026-10-28 | Diego/Claude | contratos | `rabbitmq.md` pasa de objetivo a implementado: topología, envelope, política ACK/NACK/DLQ y API del administrador.
+- 2026-10-28 | Diego/Claude | ms-rutaexpress-notify, ms-rutaexpress-shipments | EP3: 3 colas + DLQ, consumidores por dominio con ACK manual/reintentos/DLQ; shipments publica en `cmd.direct` con envelope (notify 12 pruebas, shipments 18). Commits locales, sin push.
+- 2026-10-28 | Diego/Claude | ms-rutaexpress-rabbit-admin | Repo nuevo: administrador REST de RabbitMQ (16 pruebas). Commit local, sin push.
