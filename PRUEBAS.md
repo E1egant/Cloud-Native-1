@@ -17,9 +17,9 @@ git clone https://github.com/E1egant/ms-rutaexpress-bff
 
 | Repo | Pruebas esperadas | Qué cubren |
 |---|---|---|
-| `ms-rutaexpress-notify` | 12 | ACK, NACK a DLQ, reintentos, envelope inválido, idempotencia, seguridad |
+| `ms-rutaexpress-notify` | 14 | ACK, NACK a DLQ, reintentos, envelope inválido, idempotencia, seguridad |
 | `ms-rutaexpress-shipments` | 18 | publica `email.send`, `label.gen`, `warehouse.ticket`; el fallo del broker no rompe el envío |
-| `ms-rutaexpress-rabbit-admin` | 16 | servicio (DLQ, bindings, 404) y API (401/403/400/201/204) |
+| `ms-rutaexpress-rabbit-admin` | 19 | servicio (DLQ, bindings, 404) y API (401/403/400/201/204) |
 | `ms-rutaexpress-bff` | 15 | JWT, roles y proxy `/api/rabbit` |
 
 Los logs muestran errores de conexión a RabbitMQ en algunos tests: es normal, no hay broker en este nivel. Lo que importa es `BUILD SUCCESS` y `Failures: 0`. Los repos también tienen CI: en la pestaña **Actions** el último run debe estar en verde.

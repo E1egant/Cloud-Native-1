@@ -38,7 +38,7 @@ Productor: `ms-rutaexpress-shipments` (publica a `cmd.direct`). Consumidor: `ms-
 
 ## Política de errores del consumidor
 
-- Mensaje inválido (envelope sin `eventId`/`payload`, JSON ilegible): `basicNack(requeue=false)` → DLQ, sin reintentos.
+- Mensaje inválido (envelope sin `eventId`/`payload`, JSON ilegible) o dato inválido (`IllegalArgumentException`, p. ej. destinatario vacío): `basicNack(requeue=false)` → DLQ, sin reintentos.
 - Error transitorio (BD caída): hasta 3 intentos en proceso; si se agotan, `basicNack(requeue=false)` → DLQ.
 - Todo envío a DLQ se registra en el log con `eventId`, cola y causa.
 
@@ -48,11 +48,13 @@ Rol `Admin`. Recursos REST sobre `/api/rabbit`:
 
 | Método | Ruta | Acción |
 |---|---|---|
+| GET | `/queues` | listar las colas del vhost con mensajes y consumidores (vía API de management) |
 | POST | `/queues` | crear `{name, durable?, deadLetter?}` (con DLQ `<name>.dlq` opcional) |
 | GET | `/queues/{name}` | mensajes y consumidores |
 | DELETE | `/queues/{name}` | eliminar |
 | POST / DELETE | `/exchanges` · `/exchanges/{name}` | crear (`direct`/`topic`/`fanout`) / eliminar |
-| POST / DELETE | `/bindings` | crear / eliminar (cuerpo `{exchange, queue, routingKey}`) |
+| POST | `/bindings` | crear (cuerpo `{exchange, queue, routingKey}`) |
+| DELETE | `/bindings?exchange=&queue=&routingKey=` | eliminar |
 
 Validación: nombres no vacíos, `^[A-Za-z0-9._-]{1,200}$`, tipo de exchange permitido; 400 con detalle por campo.
 
