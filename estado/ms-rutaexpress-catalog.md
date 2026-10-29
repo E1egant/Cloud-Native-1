@@ -1,6 +1,6 @@
 # Estado: ms-rutaexpress-catalog
 
-**Dueño:** compañero / opencode · **Actualizado:** 2026-09-24
+**Dueño:** Lucas Alcaino / opencode · **Actualizado:** 2026-09-24
 
 ## Hecho
 Servicios, tarifas y flota (seeder demo). Repo independiente. 33 pruebas verdes (servicio, API, seguridad).

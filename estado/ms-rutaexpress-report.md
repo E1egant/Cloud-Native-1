@@ -1,6 +1,6 @@
 # Estado: ms-rutaexpress-report
 
-**Dueño:** compañero / opencode · **Actualizado:** 2026-09-24
+**Dueño:** Lucas Alcaino / opencode · **Actualizado:** 2026-09-24
 
 ## Hecho
 Consumidor Kafka (dual `shipment-events` + `shipments.events`). `GET /api/reports/kpis?range=`, `/hourly`, `/leadtime`, `/top-services?range=&limit=`. Repo independiente. 18 pruebas verdes. Audience validada (T2). `Dockerfile` y CI propios.

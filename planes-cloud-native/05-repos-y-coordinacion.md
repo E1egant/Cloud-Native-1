@@ -7,7 +7,7 @@ La EP1 exige entregar enlaces GitHub por componente (frontend + varios microserv
 - Repo central = `Cloud-Native-1` (sin repo nuevo).
 - División por repos completos:
 
-| Diego / Claude | Compañero / opencode |
+| Diego / Claude | Lucas Alcaino / opencode |
 |---|---|
 | `frontend-rutaexpress` | `ms-rutaexpress-catalog` |
 | `ms-rutaexpress-bff` | `ms-rutaexpress-audit` |
@@ -43,7 +43,7 @@ Nuevo contenido versionado:
 - `ms-rutaexpress-notify`: consumidor RabbitMQ (sin BD), colas email/warehouse/label + DLQ, envelope, ACK/NACK.
 - BFF y frontend: ajustar a contratos finales (rutas de auditoría/reportes), y a las variables reales de Azure cuando existan.
 
-### 4. Lo que queda para el compañero / opencode (documentado en `contratos/` y `estado/`)
+### 4. Lo que queda para el Lucas Alcaino / opencode (documentado en `contratos/` y `estado/`)
 - `catalog`, `audit`, `report` (mismo patrón de seguridad JWT + Oracle + tests; copiar el filtro del BFF/shipments) e `infra`.
 - Azure AD: App Registration, roles de app, scope `access_as_user`, tenant y usuarios de prueba; entregar valores por canal privado, no por git.
 

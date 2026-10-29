@@ -13,7 +13,7 @@ Leen este archivo los dos agentes: **Claude Code** (Diego) y **opencode** (`lalc
 
 Cada repo tiene un dueño; solo el dueño hace commits en él (así ambos aparecen trabajando ante el docente). Excepción: la migración inicial del monorepo a repos separados (commits `build:` y `docs:` de arranque) la hizo Diego/Claude. Si necesitas algo de un repo ajeno, se pide vía `contratos/` o `estado/`, no editando su código. Tabla completa en `REPOS.md`.
 
-| Diego / Claude | Compañero / opencode |
+| Diego / Claude | Lucas Alcaino / opencode |
 |---|---|
 | `frontend-rutaexpress`, `ms-rutaexpress-bff`, `ms-rutaexpress-shipments`, `ms-rutaexpress-notify` | `ms-rutaexpress-catalog`, `ms-rutaexpress-audit`, `ms-rutaexpress-report`, `infra` |
 

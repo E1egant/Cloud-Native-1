@@ -1,6 +1,6 @@
 # Estado: infra
 
-**Dueño:** compañero / opencode · **Actualizado:** 2026-09-24
+**Dueño:** Lucas Alcaino / opencode · **Actualizado:** 2026-09-24
 
 ## Hecho
 Compose base (RabbitMQ, Kafka KRaft, PostgreSQL), compose de apps, API Gateway CloudFormation con JWT Authorizer, ALB, guías Azure AD y EC2, smoke test. Historial conservado.

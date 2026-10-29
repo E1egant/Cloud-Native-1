@@ -9,4 +9,4 @@ EP3 (2026-10-28): topología del caso como beans (`config/RabbitConfig`: 3 excha
 Probar contra el broker real (compose de infra con `definitions.json`) y forzar un mensaje a la DLQ para la demo. Evaluar quitar la BD ("sin DB" en el caso).
 
 ## Bloqueos / necesita de otros
-Clúster de 2 nodos y compose en la EC2 (infra, compañero).
+Clúster de 2 nodos y compose en la EC2 (infra, Lucas Alcaino).
