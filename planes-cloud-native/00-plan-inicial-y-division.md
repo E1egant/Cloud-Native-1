@@ -16,7 +16,7 @@ Caso: **RutaExpress**, plataforma de envíos de última milla (ver `Material Eva
 ## División de trabajo
 
 - **Diego / Claude**: backend (microservicios de dominio: shipments, catalog, notify, report, audit, y el bff) + frontend (React).
-- **Compañero / opencode**: infraestructura (Docker Compose para apps/mq/kafka), RabbitMQ, Kafka, Azure AD (App Registration, MSAL config), AWS API Gateway, despliegue en EC2.
+- **Lucas Alcaino / opencode**: infraestructura (Docker Compose para apps/mq/kafka), RabbitMQ, Kafka, Azure AD (App Registration, MSAL config), AWS API Gateway, despliegue en EC2.
 
 ## Pasos de esta fase (Fase 0)
 

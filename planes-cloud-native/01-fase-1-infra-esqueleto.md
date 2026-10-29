@@ -1,7 +1,7 @@
 # Plan Fase 1 — Esqueleto de infraestructura
 
 **Fecha:** 2026-09-21
-**Autor:** Compañero / Deepseek
+**Autor:** Lucas Alcaino / Deepseek
 
 ## Objetivo
 

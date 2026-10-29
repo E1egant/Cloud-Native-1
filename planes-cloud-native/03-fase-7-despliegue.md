@@ -1,7 +1,7 @@
 # Plan Fase 7 — Integración y despliegue
 
 **Fecha:** 2026-09-21
-**Autor:** Compañero / opencode
+**Autor:** Lucas Alcaino / opencode
 
 ## Objetivo
 

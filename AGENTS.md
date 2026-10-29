@@ -15,7 +15,7 @@ Cada repo tiene un dueño; solo el dueño hace commits en él (así ambos aparec
 
 | Diego / Claude | Lucas Alcaino / opencode |
 |---|---|
-| `frontend-rutaexpress`, `ms-rutaexpress-bff`, `ms-rutaexpress-shipments`, `ms-rutaexpress-notify` | `ms-rutaexpress-catalog`, `ms-rutaexpress-audit`, `ms-rutaexpress-report`, `infra` |
+| `frontend-rutaexpress`, `ms-rutaexpress-bff`, `ms-rutaexpress-shipments`, `ms-rutaexpress-notify`, `ms-rutaexpress-rabbit-admin` | `ms-rutaexpress-catalog`, `ms-rutaexpress-audit`, `ms-rutaexpress-report`, `infra` |
 
 ## Decisiones fijas
 
