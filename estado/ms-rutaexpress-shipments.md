@@ -13,3 +13,6 @@ Endpoint de reserva de capacidad en `ms-rutaexpress-catalog` (pedido al compañe
 
 ## EP3 (2026-10-28)
 Publica `email.send`, `label.gen` (al crear) y `warehouse.ticket` (al pasar a `PICKED_UP`) en `cmd.direct` con envelope (`NotificationPublisher`); un fallo del broker se registra y no afecta el envío. 18 pruebas verdes. Commit local `f2c6736`, **sin push**.
+
+## Fix 2026-10-28
+El matcher `PATCH /api/shipments/**/status` era inválido en Spring 6 y respondía 500 con el perfil `secure` (rompía el cambio de estado y el ticket de bodega). Corregido a `/api/shipments/*/status`; 20 pruebas, con regresión. Desplegado.
