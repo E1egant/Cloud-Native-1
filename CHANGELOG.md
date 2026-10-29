@@ -51,3 +51,4 @@ Registro de avances del proyecto, por push. Este archivo SÍ se versiona en git:
 - 2026-10-28 | Diego/Claude | ms-rutaexpress-rabbit-admin | Repo nuevo: administrador REST de RabbitMQ (16 pruebas). Commit local, sin push.
 - 2026-10-28 | Diego/Claude | ms-rutaexpress-rabbit-admin | Repo creado en GitHub (privado, colaborador lalcaino) y subido; notify y shipments también subidos.
 - 2026-10-28 | Diego/Claude | EC2 | Clúster RabbitMQ de 2 nodos (rabbit1/rabbit2, Management UI 15672/15673) con docker compose, topología cargada y política de réplica; notify, shipments y rabbit-admin (:8087) desplegados. Prueba: mensaje válido consumido e inválido en `q.cmd.label.dlq`. Pendiente: ruta de rabbit-admin en el API Gateway. Archivos en `Desktop/deploy-aws/rabbit/` (fuera de git).
+- 2026-10-28 | Diego/Claude | ms-rutaexpress-bff, EC2 | BFF con proxy `/api/rabbit` (rol Admin) y ruta `ANY /api/rabbit/{proxy+}` en el API Gateway con el JWT authorizer; BFF redesplegado.

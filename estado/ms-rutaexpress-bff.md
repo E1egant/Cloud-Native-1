@@ -10,3 +10,6 @@ Cache de JWKS y logs de rechazo de token; probar con token real.
 
 ## Bloqueos / necesita de otros
 `AZURE_TENANT_ID` y `AZURE_API_AUDIENCE` reales (T1, Azure AD).
+
+## EP4 (2026-10-28)
+Proxy `/api/rabbit/**` hacia `ms-rutaexpress-rabbit-admin` (`RABBIT_ADMIN_URL`, rol `Admin`); 15 pruebas verdes. Desplegado en la EC2 y expuesto por el API Gateway (`ANY /api/rabbit/{proxy+}` con JWT authorizer).
