@@ -59,3 +59,5 @@ Validación: nombres no vacíos, `^[A-Za-z0-9._-]{1,200}$`, tipo de exchange per
 ## Clúster
 
 2 nodos RabbitMQ (`rabbit1`, `rabbit2`) con Management UI, levantados con `docker compose` en la EC2 (responsable: `infra`).
+
+Acceso: el BFF expone `/api/rabbit/**` (rol `Admin`) y lo reenvía a `RABBIT_ADMIN_URL` (por defecto `http://localhost:8087`); en el API Gateway, ruta `ANY /api/rabbit/{proxy+}` con el JWT authorizer hacia la misma integración del BFF.
