@@ -1,11 +1,11 @@
 # Plan Fase 1 — Esqueleto de infraestructura
 
 **Fecha:** 2026-09-21
-**Autor:** Lucas Alcaino / Deepseek
+**Autor:** Lucas Alcaino
 
 ## Objetivo
 
-Dejar levantable un entorno local con brokers de mensajería y la base de configuración de identidad (Azure AD) y despliegue (EC2), listo para que Diego/Claude conecten los microservicios en Fase 2+.
+Dejar levantable un entorno local con brokers de mensajería y la base de configuración de identidad (Azure AD) y despliegue (EC2), listo para que Diego Miranda conecten los microservicios en Fase 2+.
 
 ## Alcance (mi parte)
 
@@ -27,7 +27,7 @@ Dejar levantable un entorno local con brokers de mensajería y la base de config
 6. `docs: agrega notas de despliegue EC2 y JWT Authorizer`
 7. Actualizar `CHANGELOG.md` (entrada Fase 1) y `README.md` (sección "Cómo levantar la infra").
 
-## Fuera de alcance (queda para Diego/Claude)
+## Fuera de alcance (queda para Diego Miranda)
 
 - Microservicios Spring Boot y BFF.
 - Frontend React.

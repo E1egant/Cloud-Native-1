@@ -1,7 +1,7 @@
 # Plan Fase 1 (completar) + Fase 2 — Contratos, esqueleto y dominio base
 
 **Fecha:** 2026-09-21
-**Autor:** Lucas Alcaino / opencode
+**Autor:** Lucas Alcaino
 
 ## Contexto
 

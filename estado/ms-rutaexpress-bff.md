@@ -1,6 +1,6 @@
 # Estado: ms-rutaexpress-bff
 
-**Dueño:** Diego / Claude · **Actualizado:** 2026-09-23
+**Responsable:** Diego Miranda · **Actualizado:** 2026-09-23
 
 ## Hecho
 Validación JWT (firma, vigencia, issuer, audience), roles desde `roles` (incluye `Bodega`, ya cubierto por test), 401/403 en JSON, CORS, proxy 1:1 a shipments/catalog/audit/report/notify. **Decisión: se mantiene el proxy 1:1** (no el agregador `/api/bff/*` de `legacy-monorepo`); el frontend ya usa las rutas `/api/*`. 14 pruebas verdes (firma, expiración, issuer, audience, PATCH por rol). `Dockerfile` (Java 21, sin perfil dev inseguro: siempre valida JWT). CI (`.github/workflows/ci.yml`). `.env.example` nuevo.

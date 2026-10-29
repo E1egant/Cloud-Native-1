@@ -1,6 +1,6 @@
-# Guía para el compañero (opencode) — leer primero
+# Guía para Lucas Alcaino — leer primero
 
-Última actualización: 2026-09-21 · Escrita por Diego/Claude. Si algo de aquí ya no es cierto, corrígelo en este archivo (commit `docs:`) para que Diego y su agente lo vean.
+Última actualización: 2026-09-21 · Escrita por Diego Miranda. Si algo de aquí ya no es cierto, corrígelo en este archivo (commit `docs:`) para que Diego lo vea.
 
 ## 1. Qué pasó y por qué el repo cambió
 
@@ -24,9 +24,9 @@ for r in Cloud-Native-1 frontend-rutaexpress ms-rutaexpress-bff ms-rutaexpress-s
 done
 ```
 
-Antes de trabajar: `git pull` en **Cloud-Native-1** y lee `AGENTS.md`, `REPOS.md`, `contratos/diferencias-con-el-caso.md` y `estado/<tu repo>.md`. `opencode.json` ya carga `AGENTS.md`. Requisitos: Java 17+ (los `mvnw` bajan Maven solos) y Node 20+.
+Antes de trabajar: `git pull` en **Cloud-Native-1** y lee `README.md`, `REPOS.md`, `contratos/diferencias-con-el-caso.md` y `estado/<tu repo>.md`. Requisitos: Java 17+ (los `mvnw` bajan Maven solos) y Node 20+.
 
-## 3. Cómo trabajamos (resumen; reglas completas en `AGENTS.md`)
+## 3. Cómo trabajamos (resumen; reglas completas en `README.md`)
 
 - **Tus repos:** `ms-rutaexpress-catalog`, `ms-rutaexpress-audit`, `ms-rutaexpress-report`, `infra`. Solo tú haces commits ahí; Diego hace los suyos (`frontend`, `bff`, `shipments`, `notify`). Así el profe ve trabajo de los dos.
 - Commits atómicos con prefijo (`feat:`, `fix:`, `test:`, `docs:`, `infra:`); mensaje que explique el porqué.

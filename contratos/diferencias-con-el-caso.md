@@ -1,11 +1,11 @@
 # Diferencias entre lo implementado y el caso (por alinear)
 
-El backend inicial (creado por opencode/Deepseek en el monorepo) se desvía del enunciado en varios puntos. Cada fila debe resolverse con acuerdo de ambos y, si cambia un contrato, actualizar primero `contratos/`.
+El backend inicial (creado en el monorepo original) se desvía del enunciado en varios puntos. Cada fila debe resolverse con acuerdo de ambos y, si cambia un contrato, actualizar primero `contratos/`.
 
 | Tema | Caso (enunciado) | Implementado hoy | Repos afectados |
 |---|---|---|---|
 | Roles | Admin, Despachador (Operador), Cliente, Auditor | Operador, Bodega, Admin | todos + Azure AD |
-| Estados del envío | CREADO → ACEPTADO → EN_BODEGA → EN_RUTA → ENTREGADO / CANCELADO | CREATED, ASSIGNED, PICKED_UP, IN_TRANSIT, DELIVERED, CANCELLED, FAILED — **decisión 2026-09-23: se mantiene en inglés**, ya está implementado en los 4 repos de Diego y en catalog/audit/report del compañero | shipments, frontend, audit, report |
+| Estados del envío | CREADO → ACEPTADO → EN_BODEGA → EN_RUTA → ENTREGADO / CANCELADO | CREATED, ASSIGNED, PICKED_UP, IN_TRANSIT, DELIVERED, CANCELLED, FAILED — **decisión 2026-09-23: se mantiene en inglés**, ya está implementado en los 4 repos de Diego y en catalog/audit/report de Lucas Alcaino | shipments, frontend, audit, report |
 | Cambio de estado | `PUT /api/shipments/{id}/status` | `PATCH` — **decisión 2026-09-23: se mantiene `PATCH`** (mismo motivo) | shipments, bff, frontend |
 | Capacidad | Disminuye al aceptar el envío (catálogo) | `POST /api/catalog/fleet/{id}/reserve` decrementa disponible (BUSY al agotarse; 409 si no alcanza) | catalog, shipments |
 | Catálogo | `PUT /api/catalog/services/{id}` (tarifa/capacidad) | GET/POST + `PUT /api/catalog/services/{id}` | catalog |
@@ -17,5 +17,5 @@ El backend inicial (creado por opencode/Deepseek en el monorepo) se desvía del 
 | Base de datos | Oracle | H2 (dev) / PostgreSQL (prod) | shipments, catalog, notify, audit |
 | Audience del JWT | Validar issuer y audience | Todos validan issuer + audience (`audiences: <API_CLIENT_ID>` (GUID); T2 cerrada 2026-09-24) | catalog, audit, report |
 | Seguridad por defecto | Endpoints protegidos | Perfil dev sin seguridad | todos los servicios |
-| Pruebas | "responder a pruebas básicas" (EP1) | Todos los repos tienen pruebas (ver `tareas/companero-opencode.md` §4); infra solo tiene `smoke-test.sh` | infra |
-| BFF | Valida JWT (firma, vigencia, issuer, audience, rol) | Ver `ms-rutaexpress-bff` (EP1) y rama `legacy-monorepo` (versión agregadora de opencode). **Decisión 2026-09-23: se mantiene el proxy 1:1 de `main`**, no el agregador `/api/bff/*` | bff, frontend |
+| Pruebas | "responder a pruebas básicas" (EP1) | Todos los repos tienen pruebas (ver `tareas/lucas-alcaino.md` §4); infra solo tiene `smoke-test.sh` | infra |
+| BFF | Valida JWT (firma, vigencia, issuer, audience, rol) | Ver `ms-rutaexpress-bff` (EP1) y rama `legacy-monorepo` (versión agregadora del monorepo). **Decisión 2026-09-23: se mantiene el proxy 1:1 de `main`**, no el agregador `/api/bff/*` | bff, frontend |

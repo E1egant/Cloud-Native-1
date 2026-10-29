@@ -1,6 +1,6 @@
 # Estado: ms-rutaexpress-catalog
 
-**Dueño:** Lucas Alcaino / opencode · **Actualizado:** 2026-09-24
+**Responsable:** Lucas Alcaino · **Actualizado:** 2026-09-24
 
 ## Hecho
 Servicios, tarifas y flota (seeder demo). Repo independiente. 33 pruebas verdes (servicio, API, seguridad).
@@ -10,4 +10,4 @@ Servicios, tarifas y flota (seeder demo). Repo independiente. 33 pruebas verdes 
 Decidir Oracle vs PostgreSQL.
 
 ## Bloqueos / necesita de otros
-`ms-rutaexpress-shipments` (Diego) debe llamar a `POST /fleet/{id}/reserve` al aceptar un envío (contrato en `contratos/api-catalog.md`). Tareas: `tareas/companero-opencode.md`.
+`ms-rutaexpress-shipments` (Diego) debe llamar a `POST /fleet/{id}/reserve` al aceptar un envío (contrato en `contratos/api-catalog.md`). Tareas: `tareas/lucas-alcaino.md`.

@@ -1,7 +1,7 @@
 # Plan Fase 1 — BFF seguro + Frontend con login (Evaluación Parcial 1)
 
 **Fecha:** 2026-09-21
-**Autor:** Diego / Claude
+**Autor:** Diego Miranda
 
 ## Qué pide la EP1 (16%, encargo en parejas, entrega = enlaces GitHub)
 
@@ -31,6 +31,6 @@ El profesor indicó que el frontend se hace en **React**. La rúbrica nombra Ang
 5. Frontend React (Vite + TS + `@azure/msal-react`): login, rutas protegidas por rol, cliente HTTP con Bearer, vistas base.
 6. Microservicios de dominio (shipments, catalog) con Oracle + JWT — Fase 2.
 
-## Variables de configuración (las entrega infra/Azure AD del compañero)
+## Variables de configuración (las entrega infra/Azure AD de Lucas Alcaino)
 
 `AZURE_TENANT_ID`, `AZURE_API_AUDIENCE` (`api://<API_CLIENT_ID>`), `AZURE_SPA_CLIENT_ID`, URLs de microservicios.

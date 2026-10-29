@@ -1,6 +1,6 @@
 # Estado: infra
 
-**Dueño:** Lucas Alcaino / opencode · **Actualizado:** 2026-09-24
+**Responsable:** Lucas Alcaino · **Actualizado:** 2026-09-24
 
 ## Hecho
 Compose base (RabbitMQ, Kafka KRaft, PostgreSQL), compose de apps, API Gateway CloudFormation con JWT Authorizer, ALB, guías Azure AD y EC2, smoke test. Historial conservado.
@@ -11,5 +11,5 @@ Compose reescrito para repos hermanos (servicios propios con su `Dockerfile`, re
 Clúster RabbitMQ 2 nodos y Kafka 3 brokers + ZK del caso; App Registration con el set de roles acordado (T1).
 
 ## Bloqueos / necesita de otros
-Tareas detalladas y criterios de "hecho": `tareas/companero-opencode.md` (T1, T3, T4, T6c, T7, T8).
+Tareas detalladas y criterios de "hecho": `tareas/lucas-alcaino.md` (T1, T3, T4, T6c, T7, T8).
 Acuerdo de roles con Diego; entregar valores de Azure AD por canal privado.
