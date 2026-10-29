@@ -10,3 +10,6 @@ Probar login real (bloqueado por Azure AD); imagen Docker sin build real (revisa
 
 ## Bloqueos / necesita de otros
 Valores `VITE_*` (tenant, client ids, scope) del compañero — vienen de Azure AD (T1).
+
+## 2026-10-28
+Tema visual nuevo (paleta azul/turquesa, barra lateral con marca, login, tablas y botones) solo con CSS y marcado de Login/Layout; 12 pruebas y build verdes. Publicado en S3 (`index.html` + assets con su Content-Type).
